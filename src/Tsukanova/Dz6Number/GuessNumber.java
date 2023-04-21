@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class GuessNumber {
     public static void main(String[] args) {
         Scanner sca = new Scanner(System.in);
-        int i = 0;
         System.out.println("Вгадай число від 0 до 10");
         System.out.println("В тебе є 3 спроби");
         int a = 0;
