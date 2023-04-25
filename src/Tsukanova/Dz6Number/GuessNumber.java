@@ -2,41 +2,46 @@ package Tsukanova.Dz6Number;
 
 import java.util.Scanner;
 
-public class GuessNumber {
+class GuessNumber {
     public static void main(String[] args) {
         Scanner sca = new Scanner(System.in);
-        System.out.println("Гра \"Вгадай число\" (^‿^). В тебе є три спроби");
-        int a = 0;
-        int c = 2;
+        System.out.println("Вгадай число від 0 до 10");
+        System.out.println("В тебе є 3 спроби");
         int random = (int) (Math.random() * 11);
+        int a = 0;
+        int b = 4;
+
         while (true) {
-            if (sca.hasNextInt()) {
-                int userValue = sca.nextInt();
-                a++;
-                if (a <= c) {
+            a++;
+            if (a >= b) {
+                System.out.println("Гра закінчилась,спробуй ще");
+                break;
+            }
+            if (a < b) {
+                if (sca.hasNextInt()) {
+                    int userValue = sca.nextInt();
+                    if (userValue >= 0 && userValue <= 10) {
+                        System.out.println("Введене число = " + userValue);
+                    }
                     if (userValue == random) {
-                        System.out.println("WIN!!! ٩(｡•́‿•̀｡)۶");
+                        System.out.println("WIN!!! (^‿^)");
                         break;
-                    } else if (userValue > random) {
-                        System.out.println("Введи число від 0 до 10 (◕‿◕)");
+                    } else if (userValue > 10) {
+                        System.out.println("Введи число від 0 до 10");
                         continue;
                     } else if (userValue != random) {
-                        System.out.println("Ні (◕‿◕)");
+                        System.out.println("Не вгадав (◕‿◕)");
                     }
                 } else {
-                    System.out.println("Я загадав :" + random);
-                    System.out.println("Програв.Спробуй ще (◕‿◕)");
-                    break;
+                    System.out.println("Помилка.Введи число");
                 }
-            } else {
-                System.out.println("Введи лише цілі числа (◕‿◕)");
                 sca.nextLine();
             }
-            sca.nextLine();
+
         }
+
+
     }
 }
-
-
 
 
