@@ -4,44 +4,42 @@ import java.util.Scanner;
 
 class GuessNumber {
     public static void main(String[] args) {
-        Scanner sca = new Scanner(System.in);
-        System.out.println("Вгадай число від 0 до 10");
-        System.out.println("В тебе є 3 спроби");
-        int random = (int) (Math.random() * 11);
-        int a = 0;
-        int b = 4;
+        // У Японії числа 4 та 9 вважаються нещасливими.
+        // Вам потрібно пронумерувати 100 космічних шатлів для перевезення людей на Марс так, щоб у номерах шатлів не траплялося нещасливих чисел.
+        // Напишіть функцію, яка виводить усі номери таких шатлів.
 
-        while (true) {
-            a++;
-            if (a >= b) {
-                System.out.println("Гра закінчилась,спробуй ще");
-                break;
-            }
-            if (a < b) {
-                if (sca.hasNextInt()) {
-                    int userValue = sca.nextInt();
-                    if (userValue >= 0 && userValue <= 10) {
-                        System.out.println("Введене число = " + userValue);
-                    }
-                    if (userValue == random) {
-                        System.out.println("WIN!!! (^‿^)");
-                        break;
-                    } else if (userValue > 10) {
-                        System.out.println("Введи число від 0 до 10");
-                        continue;
-                    } else if (userValue != random) {
-                        System.out.println("Не вгадав (◕‿◕)");
-                    }
-                } else {
-                    System.out.println("Помилка.Введи число");
+
+        int counter = 0;
+
+
+        // version 1
+//        for (int i = 50000; counter < 100; i++) {
+//            if ((String.valueOf(i).contains("4") || String.valueOf(i).contains("9"))) {
+//                continue;
+//            }
+//            System.out.println("shuttle number: " + i);
+//            counter++;
+//        }
+
+
+        for (int i = 1; counter < 100; i++) {
+            boolean ok = true;
+            int number = i;
+            while (number > 0) {
+                int result = number % 10;
+                if (result == 4 || result == 9) {
+                    ok = false;
+                    break;
                 }
-                sca.nextLine();
+                number /= 10;
             }
-
+            if (ok) {
+                System.out.println("shuttle number: " + i);
+                counter++;
+            }
         }
-
+        System.out.println("count shuttle = " + counter);
 
     }
 }
-
 
